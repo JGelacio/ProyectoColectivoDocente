@@ -1,8 +1,8 @@
 #include <SPI.h>
 #include <MFRC522.h>
 
-#define RST_PIN 9   // Pin de reset
-#define SS_PIN 10   // Pin SDA (SS)
+#define RST_PIN 15   // Pin de reset
+#define SS_PIN 12   // Pin SDA (SS)
 
 MFRC522 mfrc522(SS_PIN, RST_PIN);
 
