@@ -91,7 +91,9 @@ CREATE TABLE IF NOT EXISTS `ptags`.`mascotas` (
   `fecha_nacimiento` DATE NULL,
   `sexo` CHAR(2) NULL,
   `tag` VARCHAR(200) NULL,
+  `compartir_contacto` BOOLEAN NOT NULL DEFAULT FALSE,
   PRIMARY KEY (`id`),
+  UNIQUE INDEX `uq_mascotas_tag` (`tag` ASC),
   INDEX `fk_mascotas_personas1_idx` (`personas_id` ASC) VISIBLE,
   CONSTRAINT `fk_mascotas_personas1`
     FOREIGN KEY (`personas_id`)

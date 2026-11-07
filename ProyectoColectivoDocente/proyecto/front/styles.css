@@ -1,0 +1,60 @@
+:root {
+  font: 16px/1.5 system-ui, sans-serif;
+  color: #2e2140;
+  background: #f3edf9;
+}
+* { box-sizing: border-box; }
+main { max-width: 64rem; margin: auto; padding: 2rem 1rem; }
+header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  padding: clamp(1rem, 4vw, 2rem);
+  margin-bottom: 1rem;
+  border: 1px solid #ddd0ed;
+  border-radius: 1rem;
+  background: #eae0f5;
+}
+#abrir-admin {
+  display: grid;
+  place-items: center;
+  flex: 0 0 44px;
+  height: 44px;
+  margin-inline-start: auto;
+  padding: 0;
+  overflow: hidden;
+  border-radius: .5rem;
+  background: transparent;
+}
+#abrir-admin img { display: block; width: 100%; height: auto; }
+header p { margin: .4rem 0 0; }
+.brand-logo { display: block; width: clamp(4.75rem, 15vw, 6.5rem); height: auto; border-radius: .85rem; }
+h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.12; margin: .4rem 0; }
+h2, h3 { margin: 0 0 .65rem; line-height: 1.25; }
+section { background: white; border: 1px solid #ddd0ed; border-radius: 1rem; padding: clamp(1rem, 4vw, 2rem); margin-bottom: 1rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1rem; margin-top: 1rem; }
+.grid form { background: #f8f4fc; padding: 1rem; border-radius: .65rem; margin-bottom: .75rem; }
+label { display: block; margin: .5rem 0 .75rem; }
+input:not([type=checkbox]), select {
+  display: block;
+  width: 100%;
+  max-width: 32rem;
+  padding: .52rem;
+  margin-top: .2rem;
+  font: inherit;
+  border: 1px solid #8e7aa4;
+  border-radius: .35rem;
+}
+#lector { margin-top: .65rem; }
+.check { display: flex; align-items: flex-start; gap: .35rem; }
+.check input { margin-top: .35rem; }
+button { font: inherit; font-weight: 650; color: white; background: #6232a3; border: 0; border-radius: .35rem; padding: .55rem .9rem; cursor: pointer; }
+button:disabled { opacity: .65; cursor: wait; }
+:focus-visible { outline: 3px solid #632bb0; outline-offset: 2px; }
+[role=status] { margin: .5rem 0 0; }
+[role=status]:empty { margin: 0; }
+.error { color: #9a2522; }
+dl { background: #eee4f8; border-radius: .5rem; padding: 1rem; overflow-wrap: anywhere; }
+dt { font-weight: 650; }
+dd { margin: 0 0 .35rem; }

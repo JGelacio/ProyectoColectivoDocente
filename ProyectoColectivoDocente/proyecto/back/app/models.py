@@ -1,6 +1,6 @@
 from datetime import date
 
-from sqlalchemy import CHAR, Date, ForeignKey, String
+from sqlalchemy import CHAR, Date, ForeignKey, String, UniqueConstraint, false
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .database import Base
@@ -31,6 +31,7 @@ class Persona(Base):
 
 class Mascota(Base):
     __tablename__ = "mascotas"
+    __table_args__ = (UniqueConstraint("tag", name="uq_mascotas_tag"),)
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     personas_id: Mapped[int] = mapped_column(ForeignKey("personas.id"))
@@ -40,5 +41,7 @@ class Mascota(Base):
     fecha_nacimiento: Mapped[date | None] = mapped_column(Date)
     sexo: Mapped[str | None] = mapped_column(CHAR(2))
     tag: Mapped[str | None] = mapped_column(String(200))
+
+    compartir_contacto: Mapped[bool] = mapped_column(server_default=false())
 
     persona: Mapped[Persona] = relationship(back_populates="mascotas")

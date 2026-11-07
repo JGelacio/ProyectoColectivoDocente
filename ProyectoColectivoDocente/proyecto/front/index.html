@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>PTAGS · Identificación de mascotas</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+<main>
+  <header>
+    <img class="brand-logo" src="/static/logo-ptags.png" alt="PTAGS" width="104" height="104">
+    <div>
+      <h1>Identificación de mascotas</h1>
+      <p>Consulta la ficha de una mascota con el código de su tag.</p>
+    </div>
+    <button type="button" id="abrir-admin" aria-label="Administración" aria-controls="panel-admin" aria-expanded="false">
+      <img src="/static/icono-admin.png" alt="" width="126" height="124">
+    </button>
+  </header>
+  <section id="panel-admin" aria-labelledby="titulo-admin" hidden>
+    <h2 id="titulo-admin">Administración</h2>
+    <form id="acceso">
+      <label>Usuario <input name="usuario" autocomplete="username" value="admin" required></label>
+      <label>Contraseña <input name="clave" type="password" autocomplete="current-password" required></label>
+      <button>Entrar</button>
+      <p role="status"></p>
+    </form>
+    <div id="admin" hidden>
+      <button type="button" id="salir">Cerrar sesión</button>
+      <div class="grid">
+        <form id="tipo" hidden>
+          <h3>Habilitar tipo Cliente</h3>
+          <p>Activa el tipo Cliente para registrar propietarios.</p>
+          <button>Habilitar Cliente</button>
+          <p role="status"></p>
+        </form>
+        <form id="persona">
+          <h3>Registrar cliente</h3>
+          <label>Tipo <select name="tipo_persona_id" required></select></label>
+          <label>Nombre <input name="nombre" maxlength="45" required></label>
+          <label>Teléfono <input name="telefono" type="tel" maxlength="45"></label>
+          <label>Correo <input name="email" type="email" maxlength="45"></label>
+          <label>Dirección <input name="direccion" maxlength="45"></label>
+          <button>Guardar cliente</button>
+          <p role="status"></p>
+        </form>
+        <form id="mascota">
+          <h3>Registrar mascota</h3>
+          <label>Propietario <select name="personas_id" required></select></label>
+          <label>Nombre <input name="nombre" maxlength="45" required></label>
+          <label>Especie <input name="especie" maxlength="45" required></label>
+          <label>Raza <input name="raza" maxlength="45"></label>
+          <label>Fecha de nacimiento <input name="fecha_nacimiento" type="date"></label>
+          <label>Sexo <input name="sexo" maxlength="2"></label>
+          <label>Tag (opcional) <input name="tag" maxlength="230" autocomplete="off"></label>
+          <label class="check"><input name="compartir_contacto" type="checkbox"> El propietario autoriza mostrar su nombre y teléfono al consultar este tag.</label>
+          <button>Guardar mascota</button>
+          <p role="status"></p>
+        </form>
+        <div>
+          <form id="asignar">
+            <h3>Asignar o reemplazar tag</h3>
+            <label>Mascota <select name="mascota_id" required></select></label>
+            <label>Nuevo código <input name="tag" maxlength="230" required autocomplete="off"></label>
+            <button>Guardar tag</button>
+            <p role="status"></p>
+          </form>
+          <form id="contacto">
+            <h3>Contacto en la ficha pública</h3>
+            <label>Mascota <select name="mascota_id" required></select></label>
+            <label>Autorización
+              <select name="compartir" required>
+                <option value="">Selecciona una opción</option>
+                <option value="false">Ocultar nombre y teléfono</option>
+                <option value="true">Mostrar nombre y teléfono autorizados</option>
+              </select>
+            </label>
+            <button>Guardar autorización</button>
+            <p role="status"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section aria-labelledby="buscar">
+    <h2 id="buscar">Consultar un tag</h2>
+    <form id="consulta">
+      <label>Código del tag <input name="codigo" maxlength="230" required autofocus autocomplete="off"></label>
+      <button>Consultar</button>
+      <p role="status"></p>
+    </form>
+    <div id="lector" hidden>
+      <button type="button" id="conectar">Conectar lector USB</button>
+      <p id="estado-lector" role="status"></p>
+    </div>
+    <dl id="ficha" hidden></dl>
+  </section>
+</main>
+</body>
+</html>
